@@ -455,10 +455,40 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
+    /* ── MOBILE AVATAR ── */
+    .hero-avatar {
+      display: none; /* hidden on desktop */
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--violet);
+      box-shadow: 0 0 20px var(--violet-glow);
+      flex-shrink: 0;
+    }
+    .hero-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+    }
+    .hero-name-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    /* On desktop, name-row is just the h1 normally */
+    @media (min-width: 901px) {
+      .hero-name-row { display: block; }
+      .hero-name { margin-bottom: 1.5rem; }
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 900px) {
       #hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; }
       .hero-photo-wrap { display: none; }
+      .hero-avatar { display: block; }
+      .hero-name-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+      .hero-name { margin-bottom: 0; font-size: clamp(2.8rem, 12vw, 5rem); }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .about-photo-wrap { max-width: 300px; }
       .about-stats { grid-template-columns: repeat(3, 1fr); }
@@ -502,7 +532,12 @@
 
     <div class="hero-text">
       <p class="hero-eyebrow">Analytics Engineer · Data Ops · AI Practitioner</p>
-      <h1 class="hero-name">Isadora<br><em>Onofrio</em></h1>
+      <div class="hero-name-row">
+        <h1 class="hero-name">Isadora<br><em>Onofrio</em></h1>
+        <div class="hero-avatar">
+          <img src="photo-hero.png" alt="Isadora Onofrio" />
+        </div>
+      </div>
       <p class="hero-tagline">Bridging the gap between systems and data.</p>
       <p class="hero-sub">I build the infrastructure that makes revenue operations work — from CRM architecture and integrations to data pipelines and analytics.</p>
       <div class="hero-ctas">
@@ -689,25 +724,43 @@
 
         <!-- PROJECT 3: CS Ops Pipeline -->
         <div class="project-card reveal">
-          <div class="project-visual">
-            <svg class="project-diagram" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="10" y="55" width="80" height="40" rx="6" fill="rgba(124,92,252,0.15)" stroke="rgba(124,92,252,0.5)" stroke-width="1"/>
-              <text x="50" y="78" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" fill="#a98bff">Freshdesk API</text>
-              <line x1="90" y1="75" x2="130" y2="75" stroke="rgba(124,92,252,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
-              <polygon points="132,75 125,71 125,79" fill="rgba(124,92,252,0.7)"/>
-              <rect x="130" y="55" width="80" height="40" rx="6" fill="rgba(124,92,252,0.2)" stroke="rgba(124,92,252,0.6)" stroke-width="1.5"/>
-              <text x="170" y="74" text-anchor="middle" font-family="DM Mono, monospace" font-size="8.5" fill="#e8e4f8">Google Apps</text>
-              <text x="170" y="87" text-anchor="middle" font-family="DM Mono, monospace" font-size="8.5" fill="#e8e4f8">Script</text>
-              <line x1="210" y1="75" x2="250" y2="75" stroke="rgba(124,92,252,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
-              <polygon points="252,75 245,71 245,79" fill="rgba(124,92,252,0.7)"/>
-              <rect x="250" y="55" width="65" height="40" rx="6" fill="rgba(124,92,252,0.15)" stroke="rgba(124,92,252,0.5)" stroke-width="1"/>
-              <text x="282" y="74" text-anchor="middle" font-family="DM Mono, monospace" font-size="8.5" fill="#a98bff">Looker</text>
-              <text x="282" y="87" text-anchor="middle" font-family="DM Mono, monospace" font-size="8.5" fill="#a98bff">Studio</text>
-              <rect x="75" y="120" width="170" height="32" rx="6" fill="rgba(124,92,252,0.08)" stroke="rgba(124,92,252,0.25)" stroke-width="1"/>
-              <text x="160" y="140" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" fill="rgba(169,139,255,0.8)">↓ 70% manual reporting</text>
-              <text x="160" y="22" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="rgba(124,92,252,0.6)" letter-spacing="2">CS OPS PIPELINE</text>
-              <text x="160" y="40" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(169,139,255,0.5)">automated · end to end · leadership KPIs</text>
-              <text x="160" y="175" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(169,139,255,0.4)">Asksuite · 2025–2026</text>
+          <div class="project-visual" style="padding: 2.5rem;">
+            <svg style="width:100%;max-width:400px" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Title -->
+              <text x="200" y="26" text-anchor="middle" font-family="DM Mono, monospace" font-size="13" font-weight="500" fill="rgba(124,92,252,0.8)" letter-spacing="3">CS OPS PIPELINE</text>
+              <text x="200" y="46" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="rgba(169,139,255,0.5)">automated · end to end · leadership KPIs</text>
+
+              <!-- Node 1: Freshdesk -->
+              <rect x="12" y="78" width="104" height="52" rx="8" fill="rgba(124,92,252,0.15)" stroke="rgba(124,92,252,0.5)" stroke-width="1.5"/>
+              <text x="64" y="100" text-anchor="middle" font-family="DM Mono, monospace" font-size="12" fill="#a98bff">Freshdesk</text>
+              <text x="64" y="118" text-anchor="middle" font-family="DM Mono, monospace" font-size="12" fill="#a98bff">API</text>
+
+              <!-- Arrow 1 -->
+              <line x1="116" y1="104" x2="148" y2="104" stroke="rgba(124,92,252,0.5)" stroke-width="1.5" stroke-dasharray="5,4"/>
+              <polygon points="150,104 142,99 142,109" fill="rgba(124,92,252,0.8)"/>
+
+              <!-- Node 2: Google Apps Script (highlighted) -->
+              <rect x="150" y="72" width="100" height="64" rx="8" fill="rgba(124,92,252,0.25)" stroke="rgba(124,92,252,0.75)" stroke-width="2"/>
+              <text x="200" y="98" text-anchor="middle" font-family="DM Mono, monospace" font-size="12" fill="#e8e4f8">Google Apps</text>
+              <text x="200" y="114" text-anchor="middle" font-family="DM Mono, monospace" font-size="12" fill="#e8e4f8">Script</text>
+              <text x="200" y="128" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="rgba(200,184,255,0.6)">transform</text>
+
+              <!-- Arrow 2 -->
+              <line x1="250" y1="104" x2="282" y2="104" stroke="rgba(124,92,252,0.5)" stroke-width="1.5" stroke-dasharray="5,4"/>
+              <polygon points="284,104 276,99 276,109" fill="rgba(124,92,252,0.8)"/>
+
+              <!-- Node 3: Looker Studio -->
+              <rect x="284" y="78" width="104" height="52" rx="8" fill="rgba(124,92,252,0.15)" stroke="rgba(124,92,252,0.5)" stroke-width="1.5"/>
+              <text x="336" y="100" text-anchor="middle" font-family="DM Mono, monospace" font-size="12" fill="#a98bff">Looker</text>
+              <text x="336" y="118" text-anchor="middle" font-family="DM Mono, monospace" font-size="12" fill="#a98bff">Studio</text>
+
+              <!-- Impact badge -->
+              <rect x="100" y="162" width="200" height="44" rx="8" fill="rgba(124,92,252,0.1)" stroke="rgba(124,92,252,0.3)" stroke-width="1"/>
+              <text x="200" y="182" text-anchor="middle" font-family="DM Mono, monospace" font-size="13" font-weight="500" fill="rgba(169,139,255,0.9)">↓ 70% manual reporting</text>
+              <text x="200" y="198" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="rgba(169,139,255,0.5)">CS · Sales · Finance KPIs</text>
+
+              <!-- Footer -->
+              <text x="200" y="238" text-anchor="middle" font-family="DM Mono, monospace" font-size="11" fill="rgba(169,139,255,0.35)">Asksuite · 2025–2026</text>
             </svg>
           </div>
           <div class="project-content">
@@ -720,46 +773,6 @@
               <span class="skill-tag">Looker Studio</span>
               <span class="skill-tag">KPI Design</span>
               <span class="skill-tag">Claude API</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROJECT 4: Portfolio Site -->
-        <div class="project-card reversed reveal reveal-delay-1">
-          <div class="project-visual">
-            <svg class="project-diagram" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="160" y="22" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="rgba(124,92,252,0.6)" letter-spacing="2">PORTFOLIO SITE</text>
-              <text x="160" y="40" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(169,139,255,0.5)">design · build · deploy</text>
-              <rect x="20" y="55" width="80" height="36" rx="6" fill="rgba(124,92,252,0.15)" stroke="rgba(124,92,252,0.5)" stroke-width="1"/>
-              <text x="60" y="77" text-anchor="middle" font-family="DM Mono, monospace" font-size="8.5" fill="#a98bff">HTML / CSS</text>
-              <line x1="100" y1="73" x2="130" y2="73" stroke="rgba(124,92,252,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
-              <polygon points="132,73 125,69 125,77" fill="rgba(124,92,252,0.7)"/>
-              <rect x="130" y="55" width="60" height="36" rx="6" fill="rgba(124,92,252,0.2)" stroke="rgba(124,92,252,0.6)" stroke-width="1.5"/>
-              <text x="160" y="74" text-anchor="middle" font-family="DM Mono, monospace" font-size="8.5" fill="#e8e4f8">Vanilla</text>
-              <text x="160" y="86" text-anchor="middle" font-family="DM Mono, monospace" font-size="8.5" fill="#e8e4f8">JS</text>
-              <line x1="190" y1="73" x2="220" y2="73" stroke="rgba(124,92,252,0.4)" stroke-width="1" stroke-dasharray="4,3"/>
-              <polygon points="222,73 215,69 215,77" fill="rgba(124,92,252,0.7)"/>
-              <rect x="220" y="55" width="80" height="36" rx="6" fill="rgba(124,92,252,0.15)" stroke="rgba(124,92,252,0.5)" stroke-width="1"/>
-              <text x="260" y="74" text-anchor="middle" font-family="DM Mono, monospace" font-size="8.5" fill="#a98bff">GitHub</text>
-              <text x="260" y="86" text-anchor="middle" font-family="DM Mono, monospace" font-size="8.5" fill="#a98bff">Pages</text>
-              <rect x="75" y="115" width="170" height="32" rx="6" fill="rgba(124,92,252,0.08)" stroke="rgba(124,92,252,0.25)" stroke-width="1"/>
-              <text x="160" y="135" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" fill="rgba(169,139,255,0.8)">isadoraot.github.io</text>
-              <text x="160" y="175" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(169,139,255,0.4)">zero dependencies · hand-coded</text>
-            </svg>
-          </div>
-          <div class="project-content">
-            <p class="project-type">Frontend · Design · Deployment</p>
-            <h3 class="project-title">Personal Portfolio — isadoraot.github.io</h3>
-            <p class="project-desc">Designed and hand-coded from scratch with zero frameworks or dependencies. Custom dark-mode aesthetic, scroll-reveal animations, responsive layout, and screenshot carousel — all in a single HTML file. Deployed via GitHub Pages.</p>
-            <div class="project-stack">
-              <span class="skill-tag">HTML / CSS</span>
-              <span class="skill-tag">Vanilla JS</span>
-              <span class="skill-tag">GitHub Pages</span>
-              <span class="skill-tag">Responsive Design</span>
-              <span class="skill-tag">CSS Animations</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/IsadoraOT/isadoraot.github.io" target="_blank" class="btn btn-outline">View on GitHub →</a>
             </div>
           </div>
         </div>

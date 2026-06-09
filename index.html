@@ -136,58 +136,11 @@
     .hero-photo-wrap {
       position: relative; z-index: 1;
       opacity: 0; animation: fadeUp 1s ease forwards 0.3s;
-      /* Outer glow that bleeds into page background */
-      filter: drop-shadow(0 0 60px rgba(124,92,252,0.25));
-    }
-
-    /* LED glow behind the portrait — radial purple light */
-    .hero-photo-wrap::before {
-      content: '';
-      position: absolute;
-      inset: -60px;
-      background: radial-gradient(
-        ellipse 75% 80% at 50% 40%,
-        rgba(100, 70, 220, 0.22) 0%,
-        rgba(60, 40, 140, 0.10) 50%,
-        transparent 75%
-      );
-      z-index: 0;
-      pointer-events: none;
     }
 
     .hero-photo-frame {
       position: relative;
-      z-index: 1;
       aspect-ratio: 3/4;
-      /* No border, no box-shadow card effect, no border-radius that reads as a frame */
-      border: none;
-      border-radius: 0;
-      overflow: visible;
-      background: transparent;
-      box-shadow: none;
-    }
-
-    /* Bottom fade — blends feet/lower body into page background */
-    .hero-photo-frame::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: -10%; right: -10%;
-      height: 38%;
-      background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* Side fades — seamless left/right edges */
-    .hero-photo-frame::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to right,  var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%),
-        linear-gradient(to bottom, transparent 50%, var(--bg) 100%);
-      z-index: 2;
-      pointer-events: none;
     }
 
     .hero-photo-frame img {
@@ -195,9 +148,6 @@
       object-fit: cover;
       object-position: center top;
       display: block;
-      /* Slight warm-cool grade to match dark site palette */
-      filter: contrast(1.06) saturate(0.92) brightness(0.97);
-      border-radius: 0;
     }
 
     .hero-photo-badge {

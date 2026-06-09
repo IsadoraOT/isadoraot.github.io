@@ -138,21 +138,19 @@
       opacity: 0; animation: fadeUp 1s ease forwards 0.3s;
     }
 
-    /* Purple studio glow — sits behind the portrait */
+    /* Purple studio glow behind the portrait — sits behind the image */
     .hero-photo-wrap::before {
       content: '';
       position: absolute;
-      inset: -15%;
+      inset: -30%;
       background: radial-gradient(
-        ellipse 70% 75% at 52% 38%,
-        rgba(110, 60, 240, 0.55) 0%,
-        rgba(80, 40, 180, 0.28) 40%,
-        rgba(40, 20, 100, 0.10) 65%,
-        transparent 82%
+        ellipse 70% 65% at 55% 40%,
+        rgba(124, 92, 252, 0.32) 0%,
+        rgba(80, 50, 200, 0.14) 45%,
+        transparent 72%
       );
       z-index: 0;
       pointer-events: none;
-      border-radius: 50%;
     }
 
     .hero-photo-frame {
@@ -166,18 +164,32 @@
     }
 
     .hero-photo-frame img {
-      width: 100%;
+      width: 115%;
       height: auto;
       object-fit: contain;
+      object-position: center bottom;
       display: block;
       position: relative;
-      z-index: 1;
+      left: -7.5%; /* center the oversized image */
 
-      /* Black background becomes transparent — purple glow shows through */
-      mix-blend-mode: screen;
+      /* Fade edges so PNG background dissolves into page */
+      mask-image: radial-gradient(
+        ellipse 82% 88% at 55% 42%,
+        black 42%,
+        rgba(0,0,0,0.88) 58%,
+        rgba(0,0,0,0.45) 75%,
+        transparent 92%
+      );
+      -webkit-mask-image: radial-gradient(
+        ellipse 82% 88% at 55% 42%,
+        black 42%,
+        rgba(0,0,0,0.88) 58%,
+        rgba(0,0,0,0.45) 75%,
+        transparent 92%
+      );
 
-      /* Subtle violet drop-shadow to integrate with glow */
-      filter: drop-shadow(0 0 30px rgba(110, 60, 240, 0.30));
+      /* Subtle violet drop-shadow to anchor the figure in the glow */
+      filter: drop-shadow(0 0 40px rgba(124, 92, 252, 0.22));
     }
 
     .hero-photo-badge {
